@@ -33,6 +33,7 @@ export const PlayOnce = ({ key, options, children }: PlayOnceProps) => {
     useEffect(() => {
         addAnimation({ key });
     });
+    const xk = 3;
 
     return <div></div>;
 };

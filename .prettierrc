@@ -3,8 +3,9 @@
     "arrowParens": "avoid",
     "bracketSpacing": true,
     "cursorOffset": -1,
-    "endOfLine": "lf",
+    "endOfLine": "auto",
     "jsxSingleQuote": false,
     "singleQuote": false,
-    "jsxBracketSameLine": false
+    "jsxBracketSameLine": false,
+    "semi": true
 }
