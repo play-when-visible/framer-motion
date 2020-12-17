@@ -1,0 +1,10 @@
+{
+    "tabWidth": 4,
+    "arrowParens": "avoid",
+    "bracketSpacing": true,
+    "cursorOffset": -1,
+    "endOfLine": "lf",
+    "jsxSingleQuote": false,
+    "singleQuote": false,
+    "jsxBracketSameLine": false
+}
