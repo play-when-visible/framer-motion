@@ -31,7 +31,7 @@ export const PlayOnce = ({ key, options, children }: PlayOnceProps) => {
     const { onlyOnce } = options!;
 
     useEffect(() => {
-        addAnimation({ key, options });
+        addAnimation({ key });
     });
 
     return <div></div>;
