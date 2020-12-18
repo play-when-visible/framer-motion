@@ -1,5 +1,5 @@
 # fm-play-when-visible
-An npm package for playing Framer Motion animations when they are rendered in the viewport.
+An npm package for playing Framer Motion animations when they become visible in the viewport.
 
 ## Installation
 To install, run...
