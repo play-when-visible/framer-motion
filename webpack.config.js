@@ -9,13 +9,10 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
         filename: "main-bundle.js",
     },
-    mode: "development",
     module: {
         rules: [
             {
-                test: /\.tsx?$/,
-                loader: "ts-loader",
-                exclude: /node_modules/,
+                loader: "babel-loader",
             },
         ],
     },
