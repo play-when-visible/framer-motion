@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 interface PlayOnceOptions {
     /**
@@ -19,15 +19,20 @@ interface PlayOnceProps {
     options?: PlayOnceOptions;
 
     /**
-     * The framer motion animation.
+     * The Framer Motion animation.
      */
     children: React.ReactNode;
 }
 
+type AnimationValueFunction = <T extends number | string | boolean>(
+    from: T,
+    to: T
+) => T;
+
 /**
- * A component for playing Framer Motion animations when they are loaded into the viewport.
+ * Plays a Framer Motion animation when it becomes visible in the viewport.
  */
-export const PlayOnce = ({ key, options, children }: PlayOnceProps) => {
+export const PlayWhenVisible = ({ key, options, children }: PlayOnceProps) => {
     const { onlyOnce } = options!;
 
     useEffect(() => {
@@ -35,4 +40,18 @@ export const PlayOnce = ({ key, options, children }: PlayOnceProps) => {
     });
 
     return <div></div>;
+};
+
+const TestComponent = () => {
+    return (
+        <div>
+            <PlayWhenVisible key="test">
+                {(animationValue: AnimationValueFunction) => {
+                    const values = {
+                        transformY: animationValue("-500px", "0px"),
+                    };
+                }}
+            </PlayWhenVisible>
+        </div>
+    );
 };
