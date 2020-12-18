@@ -34,7 +34,5 @@ export const PlayOnce = ({ key, options, children }: PlayOnceProps) => {
         addAnimation({ key });
     });
 
-    const x = 3;
-
     return <div></div>;
 };
