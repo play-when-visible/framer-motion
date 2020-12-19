@@ -1,6 +1,6 @@
 {
     "name": "@framer-motion/play-when-visible",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "index.js",
     "license": "MIT",
     "scripts": {
@@ -10,6 +10,9 @@
     },
     "dependencies": {
         "react-visibility-sensor": "^5.1.1"
+    },
+    "peerDependencies": {
+        "framer-motion": "^3.1.1"
     },
     "devDependencies": {
         "@babel/core": "^7.12.10",
