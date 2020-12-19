@@ -2,19 +2,23 @@ import { Variant, Variants } from "framer-motion";
 import React, { useState } from "react";
 import VisibilitySensor from "react-visibility-sensor";
 
-interface VariantsInput {
-    from: Variant;
-    to: Variant;
+/**
+ * The variant inputs for the animation.
+ */
+interface SetupAnimationPropsArgs {
+    variants: {
+        from: Variant;
+        to: Variant;
+    };
 }
 
-type CreateVariantsFn = (variants: VariantsInput) => Variants;
-
 /**
- * The props required to setup the Framer Motion animation. It always needs to be present on the motion JSX tag.
+ * The props required to setup the animation. It always needs to be present on your motion jsx tag.
  */
-interface SetupProps {
+interface AnimationProps {
     initial: string;
     animate: string;
+    variants: Variants;
 }
 
 /**
@@ -24,20 +28,16 @@ interface ChildrenArgs {
     /**
      * The props required to setup a Framer Motion animation to be played when it becomes visible in the viewport. It is required for these props to be present on the motion tag for it to work.
      */
-    setupProps: SetupProps;
-    /**
-     *
-     */
-    createVariants: CreateVariantsFn;
+    setupAnimationProps: (args: SetupAnimationPropsArgs) => AnimationProps;
 }
 
 interface PlayWhenVisibleProps {
     /**
-     * If true, the animation only plays on the first time it appears in the viewport.
+     * If true, the animation only plays once.
      */
     onlyOnce?: boolean;
     /**
-     * The children of The Framer Motion animation.
+     * The child function that handles the animation props.
      */
     children: (args: ChildrenArgs) => React.ReactNode;
 }
@@ -55,23 +55,24 @@ export const PlayWhenVisible = ({
     const animateVariantName = "visible";
     const notInViewportVariantName = onlyOnce ? "" : initialVariantName;
 
-    const createSetupProps = (): SetupProps => ({
-        initial: initialVariantName,
-        animate: isVisible ? animateVariantName : notInViewportVariantName,
-    });
+    const setupAnimationProps = ({
+        variants,
+    }: SetupAnimationPropsArgs): AnimationProps => {
+        const { from, to } = variants;
 
-    const createVariants: CreateVariantsFn = (
-        variants: VariantsInput
-    ): Variants => ({
-        invisible: variants.from,
-        visible: variants.to,
-    });
+        return {
+            initial: initialVariantName,
+            animate: isVisible ? animateVariantName : notInViewportVariantName,
+            variants: {
+                [initialVariantName]: from,
+                [animateVariantName]: to,
+            },
+        };
+    };
 
     return (
-        <div>
-            <VisibilitySensor onChange={visible => setVisible(visible)}>
-                {children({ setupProps: createSetupProps(), createVariants })}
-            </VisibilitySensor>
-        </div>
+        <VisibilitySensor onChange={visible => setVisible(visible)}>
+            {children({ setupAnimationProps })}
+        </VisibilitySensor>
     );
 };

@@ -7,46 +7,23 @@ describe("PlayWhenVisible component", () => {
     it("renders the animation content", () => {
         const { getByText } = render(
             <PlayWhenVisible>
-                {({ setupProps, createVariants }) => (
+                {({ setupAnimationProps }) => (
                     <motion.div
-                        {...setupProps}
-                        variants={createVariants({
-                            from: {
-                                opacity: 0,
-                            },
-                            to: {
-                                opacity: 1,
+                        {...setupAnimationProps({
+                            variants: {
+                                from: { opacity: 0 },
+                                to: { opacity: 1 },
                             },
                         })}
                     >
-                        <p>content</p>
+                        <p>animation content</p>
                     </motion.div>
                 )}
             </PlayWhenVisible>
         );
 
-        const content = getByText(/content/i);
+        const animationContent = getByText("animation content");
 
-        expect(content).toBeInTheDocument();
-    });
-
-    it("plays the animation", () => {
-        render(
-            <PlayWhenVisible>
-                {({ setupProps, createVariants }) => (
-                    <motion.div
-                        {...setupProps}
-                        variants={createVariants({
-                            from: {
-                                opacity: 0,
-                            },
-                            to: {
-                                opacity: 1,
-                            },
-                        })}
-                    ></motion.div>
-                )}
-            </PlayWhenVisible>
-        );
+        expect(animationContent).toBeInTheDocument;
     });
 });
