@@ -4,8 +4,7 @@
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-        "start": "webpack serve",
-        "build": "webpack",
+        "build": "webpack --env=production",
         "publish": "webpack-dev-server --output-public-path=/dist/",
         "test": "jest"
     },
