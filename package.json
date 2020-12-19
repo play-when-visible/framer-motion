@@ -1,7 +1,7 @@
 {
-    "name": "@framer-motion/play-when-visible",
-    "version": "1.0.1",
-    "main": "index.js",
+    "name": "@play-when-visible/framer-motion",
+    "version": "1.0.0",
+    "main": "play-when-visible.tsx",
     "license": "MIT",
     "scripts": {
         "build": "webpack --env=production",
