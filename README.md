@@ -15,7 +15,7 @@ yarn add fm-play-when-visible
 ```js
 import React from "react";
 import { motion } from "framer-motion";
-import { PlayWhenVisible } from "./play-when-visible";
+import { PlayWhenVisible } from "fm-play-when-visible";
 
 const Page = () => {
     return (
