@@ -5,7 +5,7 @@
     "license": "MIT",
     "scripts": {
         "start": "webpack serve",
-        "bundle": "webpack",
+        "build": "webpack",
         "publish": "webpack-dev-server --output-public-path=/dist/",
         "test": "jest"
     },
