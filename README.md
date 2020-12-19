@@ -13,12 +13,26 @@ yarn add fm-play-when-visible
 
 ## Example
 ```js
-import { PlayWhenVisible } from "fm-play-when-visible"
+import React from "react";
+import { motion } from "framer-motion";
+import { PlayWhenVisible } from "./play-when-visible";
 
-const Component = () => {
-    <PlayWhenVisible key="myAnimationName">
-        <motion.div>
-        </motion.div>
-    </PlayWhenVisible>
-}
+const Page = () => {
+    return (
+        <PlayWhenVisible>
+            {({ setupAnimationProps }) => (
+                <motion.div
+                    {...setupAnimationProps({
+                        variants: { from: { opacity: 0 }, to: { opacity: 1 } },
+                    })}
+                    transition={{
+                        delay: 1,
+                    }}
+                >
+                    <p>I am fading in!</p>
+                </motion.div>
+            )}
+        </PlayWhenVisible>
+    );
+};
 ```
