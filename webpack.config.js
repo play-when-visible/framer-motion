@@ -2,17 +2,19 @@
 const path = require("path");
 
 module.exports = {
-    entry: {
-        app: path.resolve(__dirname, "src/play-when-visible.tsx"),
-    },
+    entry: path.resolve(__dirname, "src/play-when-visible.tsx"),
     output: {
-        path: path.resolve(__dirname, "/dist"),
-        filename: "main-bundle.js",
+        path: path.resolve(__dirname, "dist"),
+        filename: "play-when-visible.js",
     },
     module: {
         rules: [
             {
-                loader: "babel-loader",
+                test: /\.tsx$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                },
             },
         ],
     },
