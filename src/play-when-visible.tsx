@@ -39,7 +39,7 @@ interface PlayWhenVisibleProps {
     /**
      * The child function that handles the animation props.
      */
-    children: (args: ChildrenArgs) => React.ReactNode;
+    children: (args: ChildrenArgs) => JSX.Element;
 }
 
 /**
@@ -50,19 +50,25 @@ export const PlayWhenVisible = ({
     children,
 }: PlayWhenVisibleProps) => {
     const [isVisible, setVisible] = useState(false);
-
-    const initialVariantName = "invisible";
-    const animateVariantName = "visible";
-    const notInViewportVariantName = onlyOnce ? "" : initialVariantName;
+    const [hasPlayed, setPlayed] = useState(false);
 
     const setupAnimationProps = ({
         variants,
     }: SetupAnimationPropsArgs): AnimationProps => {
         const { from, to } = variants;
 
+        const initialVariantName = "invisible";
+        const animateVariantName = "visible";
+
+        const calculateCanPlay = () => (onlyOnce ? hasPlayed : isVisible);
+        const calculateNonAnimatedVariantName = () =>
+            onlyOnce ? "" : initialVariantName;
+
         return {
             initial: initialVariantName,
-            animate: isVisible ? animateVariantName : notInViewportVariantName,
+            animate: calculateCanPlay()
+                ? animateVariantName
+                : calculateNonAnimatedVariantName(),
             variants: {
                 [initialVariantName]: from,
                 [animateVariantName]: to,
@@ -70,9 +76,17 @@ export const PlayWhenVisible = ({
         };
     };
 
+    const calculatedChildren = children({ setupAnimationProps });
+
     return (
-        <VisibilitySensor onChange={visible => setVisible(visible)}>
-            {children({ setupAnimationProps })}
+        <VisibilitySensor
+            onChange={visible => {
+                setVisible(visible);
+
+                if (visible && !hasPlayed) setPlayed(true);
+            }}
+        >
+            {calculatedChildren}
         </VisibilitySensor>
     );
 };
