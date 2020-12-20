@@ -10,5 +10,6 @@
         "allowJs": true,
         "outDir": "./dist",
         "noImplicitAny": true,
+        "declaration": true
     }
 }
