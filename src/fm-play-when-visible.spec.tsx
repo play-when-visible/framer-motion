@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { motion } from "framer-motion";
-import { PlayWhenVisible } from "./play-when-visible";
+import { PlayWhenVisible } from "./fm-play-when-visible";
 
 describe("PlayWhenVisible component", () => {
     it("renders the animation content", () => {
