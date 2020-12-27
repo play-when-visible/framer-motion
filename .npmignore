@@ -1,0 +1,7 @@
+.github
+src
+webpack.config.js
+.babelrc
+.prettierignore
+.prettierrc
+.eslintrc.js
