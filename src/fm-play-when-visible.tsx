@@ -98,7 +98,7 @@ export const PlayWhenVisible = ({
         <VisibilitySensor
             partialVisibility={!requireFullVisibility}
             onChange={visible => {
-                onVisiblityChange(visible);
+                if (onVisiblityChange) onVisiblityChange(visible);
 
                 setVisible(visible);
 
