@@ -41,10 +41,14 @@ interface PlayWhenVisibleProps {
      */
     sensorOptions?: Omit<
         React.ComponentPropsWithoutRef<typeof VisibilitySensor>,
-        "onChange"
+        "onChange" | "partialVisibility"
     >;
     /**
-     * Function that is fired when the visibility of the animation is changed.
+     * If true, requires that the animation target be fully visible before playing the animation.
+     */
+    requireFullVisibility: boolean;
+    /**
+     * Called when the visibility of the animation is changed.
      */
     onVisiblityChange: (visible: boolean) => void;
     /**
@@ -59,6 +63,7 @@ interface PlayWhenVisibleProps {
 export const PlayWhenVisible = ({
     onlyOnce,
     sensorOptions,
+    requireFullVisibility,
     onVisiblityChange,
     children,
 }: PlayWhenVisibleProps) => {
@@ -91,6 +96,7 @@ export const PlayWhenVisible = ({
 
     return (
         <VisibilitySensor
+            partialVisibility={!requireFullVisibility}
             onChange={visible => {
                 onVisiblityChange(visible);
 
