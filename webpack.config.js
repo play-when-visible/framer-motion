@@ -2,6 +2,7 @@
 const path = require("path");
 
 module.exports = {
+    target: "web",
     entry: {
         "fm-play-when-visible": path.resolve(
             __dirname,
@@ -11,6 +12,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "fm-play-when-visible.js",
+        library: "PlayWhenVisible",
+        libraryTarget: "umd",
     },
     module: {
         rules: [
