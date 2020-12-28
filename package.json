@@ -1,5 +1,5 @@
 {
-    "name": "@play-when-visible/framer-motion",
+    "name": "fm-play-when-visible",
     "version": "1.0.0",
     "main": "dist/fm-play-when-visible.js",
     "types": "dist/index.d.ts",
