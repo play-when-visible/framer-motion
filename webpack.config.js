@@ -2,7 +2,12 @@
 const path = require("path");
 
 module.exports = {
-    entry: path.resolve(__dirname, "src/fm-play-when-visible.tsx"),
+    entry: {
+        "fm-play-when-visible": path.resolve(
+            __dirname,
+            "src/fm-play-when-visible.tsx"
+        ),
+    },
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "fm-play-when-visible.js",
@@ -20,16 +25,16 @@ module.exports = {
     },
     externals: {
         react: {
-            root: "React",
-            commonjs2: "react",
             commonjs: "react",
-            amd: "react",
+            commonjs2: "react",
+            amd: "React",
+            root: "React",
         },
         "react-dom": {
-            root: "ReactDOM",
-            commonjs2: "ReactDOM",
-            commonjs: "ReactDOM",
+            commonjs: "react-dom",
+            commonjs2: "react-dom",
             amd: "ReactDOM",
+            root: "ReactDOM",
         },
     },
     mode: "production",
