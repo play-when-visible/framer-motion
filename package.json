@@ -5,10 +5,8 @@
     "types": "dist/index.d.ts",
     "license": "MIT",
     "scripts": {
-        "build": "webpack-cli",
-        "test": "jest",
-        "production-build": "rollup -c",
-        "start": "rollup -c -w"
+        "build": "rollup --config",
+        "test": "jest"
     },
     "keywords": [
         "framer-motion",
