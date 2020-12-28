@@ -13,7 +13,7 @@ interface SetupAnimationPropsArgs {
 }
 
 /**
- * The props required to setup the animation. It always needs to be present on your motion jsx tag.
+ * The props required to setup the animation.
  */
 interface AnimationProps {
     initial: string;
@@ -37,7 +37,18 @@ interface PlayWhenVisibleProps {
      */
     onlyOnce?: boolean;
     /**
-     * The child function that handles the animation props.
+     * Sensor options for react-visibility-sensor.
+     */
+    sensorOptions?: Omit<
+        React.ComponentPropsWithoutRef<typeof VisibilitySensor>,
+        "onChange"
+    >;
+    /**
+     * Function that is fired when the visibility of the animation is changed.
+     */
+    onVisiblityChange: (visible: boolean) => void;
+    /**
+     * The child function that creates the animation props.
      */
     children: (args: ChildrenArgs) => JSX.Element;
 }
@@ -47,6 +58,8 @@ interface PlayWhenVisibleProps {
  */
 export const PlayWhenVisible = ({
     onlyOnce,
+    sensorOptions,
+    onVisiblityChange,
     children,
 }: PlayWhenVisibleProps) => {
     const [isVisible, setVisible] = useState(false);
@@ -76,17 +89,18 @@ export const PlayWhenVisible = ({
         };
     };
 
-    const calculatedChildren = children({ setupAnimationProps });
-
     return (
         <VisibilitySensor
             onChange={visible => {
+                onVisiblityChange(visible);
+
                 setVisible(visible);
 
                 if (visible && !hasPlayed) setPlayed(true);
             }}
+            {...sensorOptions}
         >
-            {calculatedChildren}
+            {children({ setupAnimationProps })}
         </VisibilitySensor>
     );
 };
