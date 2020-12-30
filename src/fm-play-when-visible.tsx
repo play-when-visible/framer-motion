@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import VisibilitySensor from "react-visibility-sensor";
 
 /**
- * The variant inputs for the animation.
+ * The variants for the animation.
  */
 interface SetupAnimationPropsArgs {
     variants: {
@@ -12,43 +12,37 @@ interface SetupAnimationPropsArgs {
     };
 }
 
-/**
- * The props required to setup the animation.
- */
 interface AnimationProps {
     initial: string;
     animate: string;
     variants: Variants;
 }
 
-/**
- * The child function arguments for the PlayWhenVisible component.
- */
 interface ChildrenArgs {
     /**
-     * The props required to setup a Framer Motion animation to be played when it becomes visible in the viewport. It is required for these props to be present on the motion tag for it to work.
+     * Sets up a play when visible animation based on the variants provided.
      */
     setupAnimationProps: (args: SetupAnimationPropsArgs) => AnimationProps;
 }
 
 interface PlayWhenVisibleProps {
     /**
-     * If true, the animation only plays once.
+     * If true, the animation plays only once.
      */
     onlyOnce?: boolean;
     /**
-     * Sensor options for react-visibility-sensor.
+     * The props for the `VisibilitySensor` from `react-visibility-sensor`, excluding `partialVisibility` and `onChange`. Read more in the [react-visibility-sensor props documentation](https://github.com/joshwnj/react-visibility-sensor#props).
      */
     sensorOptions?: Omit<
         React.ComponentPropsWithoutRef<typeof VisibilitySensor>,
         "onChange" | "partialVisibility"
     >;
     /**
-     * If true, requires that the animation target be fully visible before playing the animation.
+     * If true, requires that the animation children are fully visible before playing the animation. (Equivalent to `partialVisibility` from  the `VisibilitySensor` props)
      */
     requireFullVisibility: boolean;
     /**
-     * Called when the visibility of the animation is changed.
+     * Callback for when the visibility of the animation is changed. (Equivalent to `onChange` from the `VisibilitySensor` props)
      */
     onVisiblityChange: (visible: boolean) => void;
     /**
