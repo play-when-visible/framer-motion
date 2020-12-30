@@ -9,11 +9,11 @@ An npm package for playing Framer Motion animations when they become visible in 
 ## Installation
 Install the package via your favorite package manager.
 ```
-npm install fm-play-when-visible
+npm install @play-when-visible/framer-motion
 
 or
 
-yarn add fm-play-when-visible
+yarn add @play-when-visible/framer-motion
 ```
 Make sure to also have framer-motion included in your project.
 ```
