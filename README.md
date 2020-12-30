@@ -59,33 +59,12 @@ const Page = () => {
 
 ## API
 
-## PlayWhenVisible
+### PlayWhenVisible
 The React component that handles the animation. It requires the child function: `({ setupAnimationProps }) => (...Your JSX here)`.
 
-### setupAnimationProps
+### PlayWhenVisible Props
 
-A function that constructs the animation props based on the variant inputs.
-```js
-<motion.div
-    {...setupAnimationProps({
-        variants: {
-            from: {
-                // Your initial animation state
-            },
-            to: {
-                // Your final animation state
-            },
-        },
-    })}
-    // Additional props
->
-    <p>Your animation content...</p>
-</motion.div>
-```
-
-### Options
-
-| Option                | Default Value | Description                                                                                                                                                                              |
+| Prop                | Default Value | Description                                                                                                                                                                              |
 |-----------------------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | onlyOnce              | false         | If true, the animation plays only once.                                                                                                                                             |
 | sensorOptions         | undefined     | The props for the `VisibilitySensor` from `react-visibility-sensor`, excluding `partialVisibility` and `onChange`. Read more in the [react-visibility-sensor props documentation](https://github.com/joshwnj/react-visibility-sensor#props). |
