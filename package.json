@@ -1,6 +1,6 @@
 {
-    "name": "fm-play-when-visible",
-    "version": "1.0.1",
+    "name": "@play-when-visible/framer-motion",
+    "version": "1.0.0",
     "main": "dist/fm-play-when-visible.js",
     "types": "dist/fm-play-when-visible.d.ts",
     "license": "MIT",
