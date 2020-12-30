@@ -40,11 +40,11 @@ interface PlayWhenVisibleProps {
     /**
      * If true, requires that the animation children are fully visible before playing the animation. (Equivalent to `partialVisibility` from  the `VisibilitySensor` props)
      */
-    requireFullVisibility: boolean;
+    requireFullVisibility?: boolean;
     /**
      * Callback for when the visibility of the animation is changed. (Equivalent to `onChange` from the `VisibilitySensor` props)
      */
-    onVisiblityChange: (visible: boolean) => void;
+    onVisiblityChange?: (visible: boolean) => void;
     /**
      * The child function that creates the animation props.
      */
