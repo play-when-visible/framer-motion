@@ -1,4 +1,4 @@
-# fm-play-when-visible
+# @play-when-visible/framer-motion
 An npm package for playing Framer Motion animations when they become visible in the viewport.
 
 ## Features
@@ -25,12 +25,12 @@ yarn add framer-motion
 ```
 
 ## Usage
-`fm-play-when-visible` provides the `PlayWhenVisible` component, which handles the animation setup through a child function. The child function has an takes in an object that contains a function called `setupAnimationProps`, which is used to create the props for the `motion` JSX tag. The `PlayWhenVisible` component is used as follows...
+`@play-when-visible/framer-motion` provides the `PlayWhenVisible` component, which handles the animation setup through a child function. The child function has an takes in an object that contains a function called `setupAnimationProps`, which is used to create the props for the `motion` JSX tag. The `PlayWhenVisible` component is used as follows...
 
 ```js
 import React from "react";
 import { motion } from "framer-motion";
-import { PlayWhenVisible } from "fm-play-when-visible";
+import { PlayWhenVisible } from "@play-when-visible/framer-motion";
 
 const Page = () => {
     return (
